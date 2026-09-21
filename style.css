@@ -1,0 +1,1760 @@
+/* =========================================================
+   Dra. Helena Costa - Psicóloga
+   Folha de estilos principal.
+   Conceitos: variáveis CSS, seletores, flexbox, grid,
+   responsividade, transições e hover.
+   ========================================================= */
+
+/* Variáveis (Custom Properties) — facilitam manter o tema */
+/* =========================================================
+   Dra. Helena Costa — Psicóloga
+   Tema: neutro / bege · Elegante e acolhedor
+   ========================================================= */
+:root {
+  --bg: #f7f3ec;
+  --bg-alt: #efe8dc;
+  --card: #ffffff;
+  --text: #2b2723;
+  --muted: #6b6864;
+  --line: #e5ddd0;
+
+  --primary: #6c6d74;
+  --primary-dark: #262e38;
+  --accent: #b3b7ba;
+  --soft: #f1e9dc;
+
+  --radius: 20px;
+  --radius-sm: 12px;
+
+  --shadow: 0 12px 35px rgba(43, 39, 35, .07);
+  --shadow-hover: 0 24px 55px rgba(43, 39, 35, .13);
+
+  --container: 1140px;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.container {
+  width: min(100% - 40px, var(--container));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: rgba(108, 109, 116, .96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  color: #fff;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, .08);
+}
+
+.nav {
+  min-height: 78px;
+  width: min(100% - 40px, var(--container));
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 50%;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+
+  transition: .3s ease;
+}
+
+.logo:hover .logo-mark {
+  background: rgba(255,255,255,.12);
+  transform: rotate(-5deg);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 1.12rem;
+  line-height: 1.2;
+  letter-spacing: .2px;
+}
+
+.logo-text small {
+  margin-top: 3px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: .62rem;
+  font-weight: 400;
+  letter-spacing: .5px;
+  opacity: .75;
+}
+
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  list-style: none;
+}
+
+.nav ul a {
+  position: relative;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-size: .86rem;
+  font-weight: 500;
+
+  opacity: .88;
+  transition: opacity .25s ease;
+}
+
+.nav ul a::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background: #fff;
+
+  transition: width .3s ease;
+}
+
+.nav ul a:hover {
+  opacity: 1;
+}
+
+.nav ul a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+
+  background: transparent;
+  color: #fff;
+
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+  min-height: 650px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 90px 20px;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      105deg,
+      rgba(38,46,56,.96) 0%,
+      rgba(108,109,116,.93) 52%,
+      rgba(179,183,186,.82) 100%
+    );
+
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+
+  position: absolute;
+  width: 520px;
+  height: 520px;
+
+  right: -180px;
+  top: -220px;
+
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%;
+}
+
+.hero::after {
+  content: '';
+
+  position: absolute;
+  width: 360px;
+  height: 360px;
+
+  right: -100px;
+  bottom: -190px;
+
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 50%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, var(--container));
+  margin: 0 auto;
+}
+
+.hero-content > * {
+  animation: heroFade .8s ease both;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 22px;
+
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.8);
+}
+
+.hero h1 {
+  max-width: 760px;
+
+  margin-bottom: 22px;
+
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+.hero h1 em {
+  font-weight: 500;
+  color: #e8e2d8;
+}
+
+.hero p {
+  max-width: 620px;
+
+  margin-bottom: 32px;
+
+  color: rgba(255,255,255,.82);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-bottom: 48px;
+}
+
+.hero-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+
+  list-style: none;
+}
+
+.hero-info li {
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 15px;
+  border-left: 1px solid rgba(255,255,255,.3);
+}
+
+.hero-info strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.hero-info span {
+  color: rgba(255,255,255,.68);
+  font-size: .72rem;
+}
+
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.btn {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 12px 25px;
+
+  border: 1px solid transparent;
+  border-radius: 999px;
+
+  font-size: .86rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.13);
+}
+
+.btn.primary {
+  background: var(--primary-dark);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #1d2530;
+}
+
+.hero .btn.primary {
+  background: #fff;
+  color: var(--primary-dark);
+}
+
+.hero .btn.primary:hover {
+  background: #f5f2ed;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,.42);
+}
+
+.btn.ghost:hover {
+  background: rgba(255,255,255,.1);
+}
+
+.btn.outline {
+  width: 100%;
+
+  background: transparent;
+  color: var(--primary);
+
+  border-color: var(--line);
+}
+
+.btn.outline:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.btn.full {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================================
+   SEÇÕES
+   ========================================================= */
+
+section {
+  padding: 105px 0;
+}
+
+section:nth-of-type(even) {
+  background: var(--bg-alt);
+}
+
+.section-tag {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: var(--primary);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+section h2 {
+  margin-bottom: 14px;
+
+  color: var(--text);
+
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  text-align: center;
+}
+
+section .subtitle {
+  max-width: 650px;
+
+  margin: 0 auto 55px;
+
+  color: var(--muted);
+  font-size: .98rem;
+  text-align: center;
+}
+
+
+/* =========================================================
+   CARDS DE SERVIÇOS
+   ========================================================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card {
+  position: relative;
+
+  min-height: 250px;
+
+  padding: 32px 27px;
+
+  background: rgba(255,255,255,.82);
+
+  border: 1px solid rgba(229,221,208,.85);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  overflow: hidden;
+
+  transition:
+    transform .4s cubic-bezier(.2,.8,.2,1),
+    box-shadow .4s ease,
+    border-color .4s ease;
+}
+
+.card::before {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--accent)
+  );
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform .4s ease;
+}
+
+.card:hover {
+  transform: translateY(-9px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card .icon {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 24px;
+
+  border-radius: 14px;
+
+  background: var(--soft);
+  color: var(--primary);
+
+  font-size: 1.25rem;
+
+  transition: transform .35s ease, background .35s ease;
+}
+
+.card:hover .icon {
+  transform: scale(1.08);
+  background: var(--primary);
+  color: #fff;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+
+  color: var(--text);
+
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   PLANOS
+   ========================================================= */
+
+.planos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.plano {
+  position: relative;
+
+  padding: 38px 30px;
+
+  background: rgba(255,255,255,.8);
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+.plano:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-hover);
+}
+
+.plano.destaque {
+  background: var(--primary-dark);
+  color: #fff;
+
+  border-color: var(--primary-dark);
+
+  transform: translateY(-10px);
+
+  box-shadow: 0 25px 60px rgba(38,46,56,.2);
+}
+
+.plano.destaque:hover {
+  transform: translateY(-16px);
+}
+
+.badge {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.13);
+
+  color: #fff;
+
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .4px;
+}
+
+.plano h3 {
+  margin-bottom: 10px;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+
+.plano-desc {
+  min-height: 55px;
+
+  margin-bottom: 22px;
+
+  color: var(--muted);
+  font-size: .84rem;
+}
+
+.plano.destaque .plano-desc {
+  color: rgba(255,255,255,.68);
+}
+
+.preco {
+  margin-bottom: 25px;
+
+  color: var(--primary-dark);
+
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.preco span {
+  margin-right: 3px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: .78rem;
+  vertical-align: top;
+}
+
+.preco small {
+  margin-left: 5px;
+
+  color: var(--muted);
+
+  font-family: 'Inter', sans-serif;
+  font-size: .72rem;
+}
+
+.plano.destaque .preco {
+  color: #fff;
+}
+
+.plano.destaque .preco small {
+  color: rgba(255,255,255,.55);
+}
+
+.plano ul {
+  display: grid;
+  gap: 10px;
+
+  margin-bottom: 28px;
+
+  list-style: none;
+}
+
+.plano li {
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.plano.destaque li {
+  color: rgba(255,255,255,.75);
+}
+
+.plano.destaque .btn.outline {
+  color: #fff;
+  border-color: rgba(255,255,255,.3);
+}
+
+.plano.destaque .btn.outline:hover {
+  background: #fff;
+  color: var(--primary-dark);
+}
+
+.nota {
+  margin-top: 25px;
+
+  color: var(--muted);
+  font-size: .78rem;
+  text-align: center;
+}
+
+
+/* =========================================================
+   AGENDAMENTO
+   ========================================================= */
+
+.agenda {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+
+  align-items: stretch;
+}
+
+.calendario,
+.horarios {
+  padding: 32px;
+
+  background: rgba(255,255,255,.88);
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  transition: box-shadow .3s ease;
+}
+
+.calendario:hover,
+.horarios:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+
+/* ---------- CABEÇALHO CALENDÁRIO ---------- */
+
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.cal-header h3 {
+  color: var(--text);
+
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+.cal-header button {
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  background: #fff;
+  color: var(--primary);
+
+  font-size: 1.35rem;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+.cal-header button:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+
+/* ---------- DIAS DA SEMANA ---------- */
+
+.cal-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+
+  margin-bottom: 10px;
+
+  text-align: center;
+}
+
+.cal-semana span {
+  color: var(--muted);
+
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+
+/* ---------- DIAS ---------- */
+
+.cal-dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 7px;
+}
+
+.dia {
+  aspect-ratio: 1;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  background: #faf8f4;
+  color: var(--text);
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: .86rem;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.dia:hover:not(:disabled) {
+  background: var(--soft);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.dia.hoje {
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+.dia.selecionado {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+
+  font-weight: 700;
+
+  box-shadow: 0 7px 18px rgba(108,109,116,.25);
+}
+
+.dia.disabled {
+  opacity: .3;
+  cursor: not-allowed;
+  background: #eee;
+}
+
+.dia.vazio {
+  background: transparent;
+}
+
+
+/* =========================================================
+   HORÁRIOS
+   ========================================================= */
+
+.horarios h3 {
+  margin-bottom: 20px;
+
+  color: var(--text);
+
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+
+  text-transform: capitalize;
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.slots-title {
+  grid-column: 1 / -1;
+
+  margin-bottom: 5px;
+
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.slots-empty {
+  grid-column: 1 / -1;
+
+  padding: 35px 10px;
+
+  color: var(--muted);
+
+  font-size: .86rem;
+  text-align: center;
+}
+
+.slot {
+  padding: 11px 8px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: #fff;
+  color: var(--text);
+
+  font-size: .8rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.slot:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.slot.selecionado {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+
+  box-shadow: 0 6px 16px rgba(108,109,116,.2);
+}
+
+
+/* =========================================================
+   RESUMO
+   ========================================================= */
+
+.resumo {
+  margin-top: 24px;
+  padding: 19px;
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  background: var(--soft);
+
+  animation: fadeUp .35s ease both;
+}
+
+.resumo h4 {
+  margin-bottom: 10px;
+
+  color: var(--primary);
+
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+}
+
+.resumo p {
+  margin: 4px 0;
+
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.resumo strong {
+  color: var(--text);
+}
+
+
+/* =========================================================
+   SOBRE
+   ========================================================= */
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 80px;
+
+  align-items: center;
+}
+
+.sobre-img {
+  position: relative;
+}
+
+.sobre-foto {
+  position: relative;
+
+  min-height: 520px;
+
+  overflow: hidden;
+
+  border-radius: 120px 120px 20px 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #d7d0c5,
+      #aaaeb2
+    );
+
+  box-shadow: var(--shadow-hover);
+}
+
+/*
+  Para colocar uma foto:
+  
+  .sobre-foto {
+    background:
+      url("sua-foto.jpg")
+      center / cover no-repeat;
+  }
+*/
+
+.sobre-foto::after {
+  content: '';
+
+  position: absolute;
+  inset: 18px;
+
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 105px 105px 12px 12px;
+
+  pointer-events: none;
+}
+
+.sobre-texto .section-tag {
+  text-align: left;
+}
+
+.sobre-texto h2 {
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.sobre-texto p {
+  margin-bottom: 17px;
+
+  color: var(--muted);
+  font-size: .93rem;
+}
+
+.sobre-lista {
+  display: grid;
+  gap: 11px;
+
+  margin-top: 28px;
+
+  list-style: none;
+}
+
+.sobre-lista li {
+  padding: 12px 15px;
+
+  border-left: 2px solid var(--accent);
+
+  background: rgba(255,255,255,.45);
+
+  color: var(--text);
+
+  font-size: .82rem;
+
+  transition: padding-left .25s ease;
+}
+
+.sobre-lista li:hover {
+  padding-left: 20px;
+}
+
+
+/* =========================================================
+   FORMULÁRIO DE CONTATO
+   ========================================================= */
+
+form.contact {
+  max-width: 680px;
+  margin: 0 auto;
+
+  padding: 38px;
+
+  background: rgba(255,255,255,.9);
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  display: grid;
+  gap: 17px;
+}
+
+form.contact > div:not(.mensagem-feedback) {
+  display: grid;
+  gap: 7px;
+}
+
+form.contact label {
+  color: var(--text);
+
+  font-size: .76rem;
+  font-weight: 600;
+}
+
+form.contact input,
+form.contact textarea,
+form.contact select {
+  width: 100%;
+
+  padding: 13px 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 11px;
+
+  background: #fff;
+  color: var(--text);
+
+  font-family: inherit;
+  font-size: .88rem;
+
+  outline: none;
+
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    transform .25s ease;
+}
+
+form.contact textarea {
+  resize: vertical;
+  min-height: 125px;
+}
+
+form.contact input::placeholder,
+form.contact textarea::placeholder {
+  color: #aaa6a1;
+}
+
+form.contact input:focus,
+form.contact textarea:focus,
+form.contact select:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(108,109,116,.09);
+
+  transform: translateY(-1px);
+}
+
+form.contact .btn {
+  margin-top: 5px;
+}
+
+.mensagem-feedback {
+  margin-top: 5px;
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: #ecfdf5;
+  color: #065f46;
+
+  font-size: .82rem;
+  text-align: center;
+
+  display: none;
+
+  animation: fadeUp .3s ease both;
+}
+
+.mensagem-feedback.erro {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  margin-top: 0;
+  padding: 65px 20px 25px;
+
+  background: #262e38;
+  color: #d7d9dc;
+}
+
+.footer-content {
+  width: min(100%, var(--container));
+  margin: 0 auto 45px;
+
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 50px;
+
+  text-align: left;
+}
+
+.footer-content h4 {
+  margin-bottom: 12px;
+
+  color: #fff;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.footer-content p {
+  margin-bottom: 5px;
+
+  color: #aeb2b7;
+  font-size: .78rem;
+}
+
+.footer-copy {
+  padding-top: 22px;
+
+  border-top: 1px solid rgba(255,255,255,.1);
+
+  color: #858b92;
+
+  font-size: .7rem;
+  text-align: center;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   WHATSAPP FLUTUANTE
+   ========================================================= */
+
+.whatsapp-float {
+  position: fixed;
+
+  right: 24px;
+  bottom: 24px;
+
+  z-index: 90;
+
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #25d366;
+  color: #fff;
+
+  box-shadow: 0 10px 30px rgba(37,211,102,.28);
+
+  text-decoration: none;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-5px) scale(1.05);
+
+  box-shadow:
+    0 16px 35px rgba(37,211,102,.38);
+}
+
+.whatsapp-float::before {
+  content: '';
+
+  position: absolute;
+  inset: -5px;
+
+  border: 1px solid rgba(37,211,102,.25);
+  border-radius: 50%;
+
+  animation: whatsappPulse 2.5s infinite;
+}
+/* =========================================================
+   ANIMAÇÕES E MICROINTERAÇÕES
+   ========================================================= */
+
+/* ---------- ANIMAÇÕES GERAIS ---------- */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero-content {
+  animation: fadeUp .9s ease both;
+}
+
+.hero-tag {
+  display: inline-block;
+  animation: fadeIn 1s ease .1s both;
+}
+
+.hero h1 {
+  animation: fadeUp .9s ease .15s both;
+}
+
+.hero p {
+  animation: fadeUp .9s ease .25s both;
+}
+
+.hero-actions {
+  animation: fadeUp .9s ease .35s both;
+}
+
+.hero-info {
+  animation: fadeUp .9s ease .45s both;
+}
+
+
+/* ---------- BOTÕES ---------- */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background-color .25s ease;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.25),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left .6s ease;
+}
+
+.btn:hover::after {
+  left: 140%;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, .12);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(.98);
+}
+
+
+/* ---------- CARDS ---------- */
+
+.card {
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--accent)
+  );
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+
+.card:hover {
+  transform: translateY(-9px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card .icon {
+  display: inline-flex;
+  transition:
+    transform .35s ease,
+    background-color .35s ease;
+}
+
+.card:hover .icon {
+  transform: translateY(-4px) scale(1.08);
+}
+
+
+/* ---------- TÍTULOS DAS SEÇÕES ---------- */
+
+.section-tag {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 8px;
+
+  color: var(--primary);
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+
+/* ---------- PLANOS ---------- */
+
+.plano {
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    box-shadow .35s ease;
+}
+
+.plano:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.plano.destaque {
+  position: relative;
+}
+
+.plano.destaque::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      transparent 45%
+    ) border-box;
+
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+
+  mask-composite: exclude;
+}
+
+
+/* ---------- CALENDÁRIO ---------- */
+
+.calendario,
+.horarios {
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+.calendario:hover,
+.horarios:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* ---------- DIAS ---------- */
+
+.dia {
+  transition:
+    transform .2s ease,
+    background-color .2s ease,
+    border-color .2s ease,
+    color .2s ease;
+}
+
+.dia:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+
+/* ---------- HORÁRIOS ---------- */
+
+.slot {
+  transition:
+    transform .2s ease,
+    background-color .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    box-shadow .2s ease;
+}
+
+.slot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,.08);
+}
+
+.slot.selecionado {
+  transform: scale(1.03);
+}
+
+
+/* ---------- RESUMO DO AGENDAMENTO ---------- */
+
+.resumo {
+  animation: scaleIn .3s ease both;
+}
+
+
+/* ---------- FORMULÁRIO ---------- */
+
+form.contact {
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+form.contact:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+form.contact input,
+form.contact textarea {
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    transform .25s ease;
+}
+
+form.contact input:focus,
+form.contact textarea:focus {
+  transform: translateY(-1px);
+}
+
+
+/* ---------- WHATSAPP ---------- */
+
+.whatsapp-float {
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,.2);
+}
+
+
+/* ---------- MENU ---------- */
+
+.nav a {
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .25s ease;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.menu-toggle {
+  transition:
+    transform .25s ease,
+    opacity .25s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+
+/* ---------- ENTRADA SUAVE DAS SEÇÕES ---------- */
+
+.section {
+  animation: fadeUp .8s ease both;
+}
+
+
+/* ---------- ACESSIBILIDADE ----------
+   Respeita usuários que preferem menos movimento.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+}
